@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{99A98C83-6B1C-45C9-9B91-989E089B351E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web-api", "api\web-api\web-api.csproj", "{DF02A504-C071-4400-A4D1-156F9791797E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web-api", "web-api\web-api.csproj", "{DF02A504-C071-4400-A4D1-156F9791797E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
