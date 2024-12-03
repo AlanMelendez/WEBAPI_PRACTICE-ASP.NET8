@@ -3,6 +3,8 @@ If you want view the course follow this link [click here](https://www.youtube.co
 
 It's a exercise to explain for my coworkers, because they want understand .NET to use daily.
 
+# To execute project in VSCode use next command:
+`dotnet watch run`
 
 # Next, we view the commands used in the course
 
@@ -13,3 +15,4 @@ It's a exercise to explain for my coworkers, because they want understand .NET t
 `dotnet ef database update`
 
 
+ 
