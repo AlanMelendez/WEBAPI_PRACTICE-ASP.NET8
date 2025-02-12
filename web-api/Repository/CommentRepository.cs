@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using web_api.Data;
+using web_api.DTOs.Comment;
 using web_api.interfaces;
 using web_api.Models;
 
@@ -36,6 +37,22 @@ namespace web_api.Repository
             await _context.SaveChangesAsync();
 
             return comment;
+        }
+
+        public async Task<Comment> UpdateAsync(int id, Comment comment)
+        {
+            var commentToUpdate = await _context.Comments.FirstOrDefaultAsync(x => x.Id == id);
+            if(commentToUpdate == null){
+                return null;
+            }
+
+            commentToUpdate.Title = comment.Title;
+            commentToUpdate.Content = comment.Content;
+
+            await _context.SaveChangesAsync();
+
+            return commentToUpdate;
+
         }
     }
 }
