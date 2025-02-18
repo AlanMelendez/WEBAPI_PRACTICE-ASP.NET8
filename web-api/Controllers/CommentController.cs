@@ -32,7 +32,7 @@ namespace web_api.Controllers
             return Ok(commentDto);
         } 
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var comment = await _commentRepository.GetByIdAsync(id);
@@ -44,10 +44,13 @@ namespace web_api.Controllers
            return Ok(comment.ToCommentDto());
         }
 
-        [HttpPost("{stockId}")]
+        [HttpPost("{stockId:int}")]
         public async Task<IActionResult> CreateAsync([FromRoute] int stockId, [FromBody] CreateCommentDto comment)
         {
-            if( !await _stockRepository.StockExist(stockId)) BadRequest("Stock does not exist");
+            if( !await _stockRepository.StockExist(stockId)) 
+            {
+                return NotFound("Stock not found");
+            }
 
             var newComment = comment.ToCommentFromCreate(stockId);
             await _commentRepository.CreateAsync(newComment);
@@ -56,7 +59,7 @@ namespace web_api.Controllers
 
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateAsync([FromRoute] int id, [FromBody] UpdateCommentDto commentUpdate)
         {
             
@@ -68,5 +71,17 @@ namespace web_api.Controllers
 
             return Ok(comment.ToCommentDto());
         }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<IActionResult> DeleteAsync([FromRoute] int id)
+        {
+            var commentModel = await _commentRepository.DeleteAsync(id);
+
+            if(commentModel == null){
+                return NotFound("Coment does not exists");
+            }
+            return Ok(commentModel);
+        }   
     }
 }

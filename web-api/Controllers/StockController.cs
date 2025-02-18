@@ -61,7 +61,7 @@ namespace web_api.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{idLint}")]
         public async Task<IActionResult> Update ([FromRoute] int id, [FromBody] UpdateStockRequestDTO updateDTO )
         {
             var stockModel = await _stockRepository.UpdateAsync(id,updateDTO);
@@ -73,7 +73,7 @@ namespace web_api.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete ([FromRoute] int id)
         {
             var stockModel = await _stockRepository.DeleteAsync(id);

@@ -16,5 +16,7 @@ namespace web_api.interfaces
         Task<Comment> CreateAsync(Comment comment);
 
         Task<Comment> UpdateAsync(int id, Comment comment);
+
+        Task<Comment?> DeleteAsync(int id);
     }
 }
